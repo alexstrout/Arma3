@@ -16,8 +16,17 @@ _validPlayer = false;
 	_x setVariable ["_uvaEventInitDone", true];
 
 	//Initial state
-	["AmmoboxInit", [_x, true]] spawn BIS_fnc_arsenal;
-	_x setVariable ["_uvaValidArse", true];
+	_x setVariable ["_uvaArseAction", _x addAction ["Arsenal (Valid Until Firing)", {
+		["Open", false] spawn BIS_fnc_arsenal;
+		with missionnamespace do {
+			BIS_fnc_arsenal_cargo = (_this select 0);
+			BIS_fnc_arsenal_center = (_this select 0);
+		};
+		[(_this select 0), true, true, false] call bis_fnc_addVirtualWeaponCargo;
+		[(_this select 0), true, true, false] call bis_fnc_addVirtualMagazineCargo;
+		[(_this select 0), true, true, false] call bis_fnc_addVirtualItemCargo;
+		[(_this select 0), true, true, false] call bis_fnc_addVirtualBackpackCargo;
+	}]];
 
 	//AI - Force-enable lasers
 	if (_aiPlayableUnitsForceLasers) then {
@@ -35,15 +44,13 @@ _validPlayer = false;
 
 	//Unit fired - disallow loadout for rest of life
 	_x addEventHandler ["Fired", {
-		["AmmoboxExit", [(_this select 0)]] spawn BIS_fnc_arsenal;
-		(_this select 0) setVariable ["_uvaValidArse", false];
+		(_this select 0) removeAction ((_this select 0) getVariable ["_uvaArseAction", -1]);
 		hint format ["%1 Playable Fired", name (_this select 0)]; //TEST
 	}];
 
 	//Unit respawned - allow loadouts again - also force lasers and high skill if appropriate
 	_x addEventHandler ["Respawn", {
-		["AmmoboxInit", [(_this select 0), true]] spawn BIS_fnc_arsenal;
-		(_this select 0) setVariable ["_uvaValidArse", true];
+		(_this select 0) setVariable ["_uvaArseAction", (_this select 0) addAction ["Arsenal (Valid Until Firing)", {["Open", true] spawn BIS_fnc_arsenal}]];
 		hint format ["%1 Playable Respawned", name (_this select 0)]; //TEST
 
 		//AI - Force-enable lasers
@@ -60,23 +67,22 @@ _validPlayer = false;
 	}];
 
 	//Unit respawned - allow loadouts again
-	_x addMPEventHandler ["MPRespawn", {
-		["AmmoboxInit", [(_this select 0), true]] spawn BIS_fnc_arsenal;
-		(_this select 0) setVariable ["_uvaValidArse", true];
-		hint format ["%1 Playable MPRespawned", name (_this select 0)]; //TEST
-
-		//AI - Force-enable lasers
-		if ((_this select 0) getVariable ["_aiForceLasers", false]) then {
-			(_this select 0) enableIRLasers true;
-		};
-
-		//AI - Force high skill
-		if ((_this select 0) getVariable ["_aiForceSkill", false]) then {
-			(_this select 0) setSkill 2.0;
-			(_this select 0) setUnitAbility 2.0;
-			(_this select 0) setCaptive true; //TEST
-		};
-	}];
+// 	_x addMPEventHandler ["MPRespawn", {
+// 		(_this select 0) setVariable ["_uvaArseAction", (_this select 0) addAction ["Arsenal (Valid Until Firing)", {["Open", true] spawn BIS_fnc_arsenal}]];
+// 		hint format ["%1 Playable MPRespawned", name (_this select 0)]; //TEST
+//
+// 		//AI - Force-enable lasers
+// 		if ((_this select 0) getVariable ["_aiForceLasers", false]) then {
+// 			(_this select 0) enableIRLasers true;
+// 		};
+//
+// 		//AI - Force high skill
+// 		if ((_this select 0) getVariable ["_aiForceSkill", false]) then {
+// 			(_this select 0) setSkill 2.0;
+// 			(_this select 0) setUnitAbility 2.0;
+// 			(_this select 0) setCaptive true; //TEST
+// 		};
+// 	}];
 }} forEach playableUnits;
 
 //Loop for script's entire lifetime
@@ -92,8 +98,7 @@ while {true} do {
 			_x setVariable ["_uvaEventInitDone", true];
 
 			//Initial state
-			["AmmoboxInit", [_x, true]] spawn BIS_fnc_arsenal;
-			_x setVariable ["_uvaValidArse", true];
+			_x setVariable ["_uvaArseAction", _x addAction ["Arsenal (Valid Until Firing)", {["Open", true] spawn BIS_fnc_arsenal}]];
 
 			//AI - Force-enable lasers
 			if (_aiPlayerGroupForceLasers) then {
@@ -111,15 +116,13 @@ while {true} do {
 
 			//Unit fired - disallow loadout for rest of life
 			_x addEventHandler ["Fired", {
-				["AmmoboxExit", [(_this select 0)]] spawn BIS_fnc_arsenal;
-				(_this select 0) setVariable ["_uvaValidArse", false];
+				(_this select 0) removeAction ((_this select 0) getVariable ["_uvaArseAction", -1]);
 				hint format ["%1 Playable Fired", name (_this select 0)]; //TEST
 			}];
 
 			//Unit respawned - allow loadouts again - also force lasers and high skill if appropriate
 			_x addEventHandler ["Respawn", {
-				["AmmoboxInit", [(_this select 0), true]] spawn BIS_fnc_arsenal;
-				(_this select 0) setVariable ["_uvaValidArse", true];
+				(_this select 0) setVariable ["_uvaArseAction", (_this select 0) addAction ["Arsenal (Valid Until Firing)", {["Open", true] spawn BIS_fnc_arsenal}]];
 				hint format ["%1 Playable Respawned", name (_this select 0)]; //TEST
 
 				//AI - Force-enable lasers
@@ -136,34 +139,27 @@ while {true} do {
 			}];
 
 			//Unit respawned - allow loadouts again
-			_x addMPEventHandler ["MPRespawn", {
-				["AmmoboxInit", [(_this select 0), true]] spawn BIS_fnc_arsenal;
-				(_this select 0) setVariable ["_uvaValidArse", true];
-				hint format ["%1 Playable MPRespawned", name (_this select 0)]; //TEST
-
-				//AI - Force-enable lasers
-				if ((_this select 0) getVariable ["_aiForceLasers", false]) then {
-					(_this select 0) enableIRLasers true;
-				};
-
-				//AI - Force high skill
-				if ((_this select 0) getVariable ["_aiForceSkill", false]) then {
-					(_this select 0) setSkill 2.0;
-					(_this select 0) setUnitAbility 2.0;
-					(_this select 0) setCaptive true; //TEST
-				};
-			}];
+// 			_x addMPEventHandler ["MPRespawn", {
+// 				(_this select 0) setVariable ["_uvaArseAction", (_this select 0) addAction ["Arsenal (Valid Until Firing)", {["Open", true] spawn BIS_fnc_arsenal}]];
+// 				hint format ["%1 Playable MPRespawned", name (_this select 0)]; //TEST
+//
+// 				//AI - Force-enable lasers
+// 				if ((_this select 0) getVariable ["_aiForceLasers", false]) then {
+// 					(_this select 0) enableIRLasers true;
+// 				};
+//
+// 				//AI - Force high skill
+// 				if ((_this select 0) getVariable ["_aiForceSkill", false]) then {
+// 					(_this select 0) setSkill 2.0;
+// 					(_this select 0) setUnitAbility 2.0;
+// 					(_this select 0) setCaptive true; //TEST
+// 				};
+// 			}];
 		}} forEach units group player;
 
 		//Don't run this again
 		_uvaPlayerGroupInit = true;
 	};
-
-	//Virtual Arsenal fix
-	if (_validPlayer) then {
-		{_x setvariable ["bis_fnc_arsenal_condition",{!isNull player && alive player && player getVariable ["_uvaValidArse", false]},true]} forEach units group player;
-	};
-	{_x setvariable ["bis_fnc_arsenal_condition",{!isNull player && alive player && player getVariable ["_uvaValidArse", false]},true]} forEach playableUnits;
 
 	//Sleep to conserve cycles
 	sleep 5.0;
