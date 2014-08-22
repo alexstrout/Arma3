@@ -9,17 +9,17 @@ _aiPlayableUnitsForceSkill = (configFile >> "foxConfig" >> "aiPlayableUnitsForce
 //Oh my grandma what strange syntax you have there
 {
 	//Add events for AI tweaks on all playable units
-	[_x, _aiPlayableUnitsForceLasers, _aiPlayableUnitsForceSkill] execVM '\foxLasers\aiEvents.sqf'
+	[_x, _aiPlayableUnitsForceLasers, _aiPlayableUnitsForceSkill] execVM '\foxLasers\aiEvents.sqf';
 } forEach playableUnits;
 
 //Start referencing player for local player group stuff
 //player will never exist on dedicated server machine, so just bail here if this is the case
-if (isDedicated) exitWith {}
-waitUntil {!isNull player && alive player}
+if (isDedicated) exitWith {};
+waitUntil {!isNull player && alive player};
 
 {
 	//Add events for AI tweaks on all units in player's group
-	[_x, _aiPlayerGroupForceLasers, _aiPlayerGroupForceSkill] execVM '\foxLasers\aiEvents.sqf'
+	[_x, _aiPlayerGroupForceLasers, _aiPlayerGroupForceSkill] execVM '\foxLasers\aiEvents.sqf';
 
 	//Add events for Universal Virtual Arsenal on all units in player's group
 	[_x] execVM '\foxLasers\uvaEvents.sqf'

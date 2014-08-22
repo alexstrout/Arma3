@@ -4,12 +4,12 @@
 _unit = _this select 0;
 
 //Operate on unit if events haven't already been set on unit
-if (_unit getVariable ["_foxUVAEventInitDone", false]) then {
+if (_unit getVariable ["_foxUVAEventInitDone", true]) then {
 	_unit setVariable ["_foxUVAEventInitDone", true];
 
 	//Initial state - allow loadouts
 	_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#FF6400'>Arsenal (Valid Until Firing)</t>", {
-		[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf'
+		[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
 	}]];
 
 	//Unit fired - count as combat, disallow loadout for rest of life
@@ -30,7 +30,7 @@ if (_unit getVariable ["_foxUVAEventInitDone", false]) then {
 	_unit addEventHandler ["Respawn", {
 		_unit = _this select 0;
 		_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#FF6400'>Arsenal (Valid Until Firing)</t>", {
-			[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf'
+			[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
 		}]];
 		//hint format ["%1 UVA Player Respawned", name _unit]; //TEST
 	}];

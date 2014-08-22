@@ -6,7 +6,7 @@ _forceLasers = _this select 1;
 _forceSkill = _this select 2;
 
 //Operate on unit if events haven't already been set on unit
-if (_unit getVariable ["_foxAIEventInitDone", false]) then {
+if (_unit getVariable ["_foxAIEventInitDone", true]) then {
 	_unit setVariable ["_foxAIEventInitDone", true];
 
 	//Force-enable lasers
