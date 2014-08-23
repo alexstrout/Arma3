@@ -2,8 +2,7 @@ class CfgPatches {
 	class foxLasers {
 		units[] = {};
 		weapons[] = {};
-		//requiredAddons[] = {};
-		requiredAddons[] = {"CBA_Extended_EventHandlers"};
+		requiredAddons[] = {};
 		version = "0.01";
 		versionStr = "0.01";
 		versionDesc= "Universal Virtual Arsenal + AI Tweaks";
@@ -12,15 +11,16 @@ class CfgPatches {
 	};
 };
 
-// class CfgFunctions {
-// 	class foxLasers {
-// 		file = "\foxLasers\init.sqf";
-// 		postInit = 1;
-// 	};
-// };
-//
-class Extended_PostInit_EventHandlers {
-	foxLasersPostInit = "[] execVM '\foxLasers\init.sqf'";
+class CfgFunctions {
+	class foxLasers {
+		class foxLasersFnc {
+			class init {
+				file = "\foxLasers\init.sqf";
+				postInit = 1;
+				recompile = 1;
+			};
+		};
+	};
 };
 
 class foxConfig {
