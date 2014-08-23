@@ -6,6 +6,9 @@ _aiPlayerGroupForceSkill = (configFile >> "foxConfig" >> "aiPlayerGroupForceSkil
 _aiPlayableUnitsForceLasers = (configFile >> "foxConfig" >> "aiPlayableUnitsForceLasers") call BIS_fnc_getCfgDataBool;
 _aiPlayableUnitsForceSkill = (configFile >> "foxConfig" >> "aiPlayableUnitsForceSkill") call BIS_fnc_getCfgDataBool;
 
+//Preload arsenal so this doesn't happen when player first picks it in-game
+["Preload"] call BIS_fnc_arsenal;
+
 //Oh my grandma what strange syntax you have there
 {
 	//Add events for AI tweaks on all playable units
