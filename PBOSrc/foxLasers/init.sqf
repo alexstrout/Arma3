@@ -1,4 +1,5 @@
 //fox: Global init script
+scopeName "init";
 
 //Arguments
 _aiPlayerGroupForceLasers = (configFile >> "foxConfig" >> "aiPlayerGroupForceLasers") call BIS_fnc_getCfgDataBool;
@@ -17,7 +18,9 @@ _aiPlayableUnitsForceSkill = (configFile >> "foxConfig" >> "aiPlayableUnitsForce
 
 //Start referencing player for local player group stuff
 //player will never exist on dedicated server machine, so just bail here if this is the case
-if (isDedicated) exitWith {};
+if (isDedicated) then {
+	breakOut "init";
+};
 waitUntil {!isNull player && alive player};
 
 {
