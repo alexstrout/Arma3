@@ -18,8 +18,18 @@ if (_unit getVariable ["_foxAIEventInitDone", true]) then {
 	//Force high skill
 	if (_forceSkill) then {
 		_unit setVariable ["_foxAIForceSkill", true];
-		_unit setSkill 2.0;
-		_unit setUnitAbility 2.0;
+		_unit setSkill 1.0;
+		_unit setskill ["aimingAccuracy", 1.0];
+		_unit setskill ["aimingShake", 1.0];
+		_unit setskill ["aimingSpeed", 1.0];
+		_unit setskill ["endurance", 1.0];
+		_unit setskill ["spotDistance", 1.0];
+		_unit setskill ["spotTime", 1.0];
+		_unit setskill ["courage", 1.0];
+		_unit setskill ["reloadSpeed", 1.0];
+		_unit setskill ["commanding", 1.0];
+		_unit setskill ["general", 1.0];
+		_unit setUnitAbility 5.0;
 		//_unit setCaptive true; //TEST
 	};
 
@@ -34,8 +44,18 @@ if (_unit getVariable ["_foxAIEventInitDone", true]) then {
 
 		//Force high skill
 		if (_unit getVariable ["_foxAIForceSkill", false]) then {
-			_unit setSkill 2.0;
-			_unit setUnitAbility 2.0;
+			_unit setSkill 1.0;
+			_unit setskill ["aimingAccuracy", 1.0];
+			_unit setskill ["aimingShake", 1.0];
+			_unit setskill ["aimingSpeed", 1.0];
+			_unit setskill ["endurance", 1.0];
+			_unit setskill ["spotDistance", 1.0];
+			_unit setskill ["spotTime", 1.0];
+			_unit setskill ["courage", 1.0];
+			_unit setskill ["reloadSpeed", 1.0];
+			_unit setskill ["commanding", 1.0];
+			_unit setskill ["general", 1.0];
+			_unit setUnitAbility 5.0;
 			//_unit setCaptive true; //TEST
 		};
 	}];
