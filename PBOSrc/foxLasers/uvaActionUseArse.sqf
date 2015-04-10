@@ -28,6 +28,11 @@ _center setFace _tempCurFace;
 _center setSpeaker _tempCurSpeaker;
 [_center, _tempCurInsignia] call BIS_fnc_setUnitInsignia;
 
+//Also broadcast these to all players (may be delayed, so we still want the above for instant local effect)
+[[_center, _tempCurFace], "BIS_fnc_setIdentity"] call BIS_fnc_mp;
+[[_center, nil, _tempCurSpeaker], "BIS_fnc_setIdentity"] call BIS_fnc_mp;
+[[_center, _tempCurInsignia], "BIS_fnc_setUnitInsignia"] call BIS_fnc_mp;
+
 //Cleanup (fixes some potential issues if we die with the screen up - which we can't easily close)
 with missionnamespace do {
 	BIS_fnc_arsenal_target = nil;
