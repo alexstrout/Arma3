@@ -4,6 +4,10 @@ scopeName "uvaSwitchArse";
 //Arguments
 _unit = _this select 0;
 _mode = _this select 1; //see switch block
+_uvaActivateOnInventoryOpen = (configFile >> "foxConfig" >> "uvaActivateOnInventoryOpen") call BIS_fnc_getCfgDataBool;
+if (isNil "_uvaActivateOnInventoryOpen") then {
+	_uvaActivateOnInventoryOpen = false;
+};
 
 //Remove old actions and events (if present)
 _unit removeAction (_unit getVariable ["_foxUVAArseAction", -1]);
@@ -19,18 +23,26 @@ switch _mode do {
 		breakOut "uvaSwitchArse";
 	};
 
-	//Turn "on" - add Arsenal ability via inventory
+	//Turn "on" - add Arsenal ability via inventory (if we're hooking that - otherwise just add Arsenal ability via action only)
 	case "on": {
-		//Add toggle action to turn "off"
-		_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#0064FF'>Arsenal -> Inventory (Forced When Firing)</t>", {
-			[_this select 0, "off"] execVM '\foxLasers\uvaSwitchArse.sqf';
-		}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
+		if (_uvaActivateOnInventoryOpen) then {
+			//Add toggle action to turn "off"
+			_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#0064FF'>Arsenal -> Inventory (Forced When Firing)</t>", {
+				[_this select 0, "off"] execVM '\foxLasers\uvaSwitchArse.sqf';
+			}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
 
-		//Inventory opened - Arsenal up!
-		_unit setVariable ["_foxUVAEventInvOpened", _unit addEventHandler ["InventoryOpened", {
-			[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
-			true;
-		}]];
+			//Inventory opened - Arsenal up!
+			_unit setVariable ["_foxUVAEventInvOpened", _unit addEventHandler ["InventoryOpened", {
+				[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
+				true;
+			}]];
+		}
+		else {
+			//Add activate action
+			_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#FFFF64'>Arsenal (Valid Until Firing)</t>", {
+				[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
+			}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
+		};
 	};
 
 	//Turn "off" - remove Arsenal ability via inventory
