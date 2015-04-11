@@ -3,9 +3,21 @@ scopeName "init";
 
 //Arguments
 _aiPlayerGroupForceLasers = (configFile >> "foxConfig" >> "aiPlayerGroupForceLasers") call BIS_fnc_getCfgDataBool;
+if (isNil "_aiPlayerGroupForceLasers") then {
+	_aiPlayerGroupForceLasers = true;
+};
 _aiPlayerGroupForceSkill = (configFile >> "foxConfig" >> "aiPlayerGroupForceSkill") call BIS_fnc_getCfgDataBool;
+if (isNil "_aiPlayerGroupForceSkill") then {
+	_aiPlayerGroupForceSkill = true;
+};
 _aiPlayableUnitsForceLasers = (configFile >> "foxConfig" >> "aiPlayableUnitsForceLasers") call BIS_fnc_getCfgDataBool;
+if (isNil "_aiPlayableUnitsForceLasers") then {
+	_aiPlayableUnitsForceLasers = false;
+};
 _aiPlayableUnitsForceSkill = (configFile >> "foxConfig" >> "aiPlayableUnitsForceSkill") call BIS_fnc_getCfgDataBool;
+if (isNil "_aiPlayableUnitsForceSkill") then {
+	_aiPlayableUnitsForceSkill = true;
+};
 
 //Preload arsenal so this doesn't happen when player first picks it in-game
 ["Preload"] call BIS_fnc_arsenal;

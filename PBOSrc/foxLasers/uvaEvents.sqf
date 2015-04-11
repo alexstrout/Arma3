@@ -4,8 +4,8 @@
 _unit = _this select 0;
 
 //Operate on unit if events haven't already been set on unit
-if (_unit getVariable ["_foxUVAEventInitDone", true]) then {
-	_unit setVariable ["_foxUVAEventInitDone", true];
+if (_unit getVariable ["_foxUVAEventNeedsInit", true]) then {
+	_unit setVariable ["_foxUVAEventNeedsInit", false];
 
 	//Initial state - allow loadouts
 	[_unit, "on"] execVM '\foxLasers\uvaSwitchArse.sqf';
