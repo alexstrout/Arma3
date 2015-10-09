@@ -3,11 +3,6 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredAddons[] = {};
-		version = "0.01";
-		versionStr = "0.01";
-		versionDesc= "Universal Virtual Arsenal + AI Tweaks";
-		versionAr[] = {0,0,1};
-		author[] = {"fox"};
 	};
 };
 
@@ -21,8 +16,4 @@ class CfgFunctions {
 			};
 		};
 	};
-};
-
-class foxConfig {
-	#include "\userconfig\foxLasers\settings.hpp"
 };

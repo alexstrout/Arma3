@@ -1,4 +1,4 @@
-name = "Universal Virtual Armory / AI Tweaks";
+name = "fox Module Configuration";
 version = "0.01";
 author = "fox";
 actionName = "Herp Derp";
@@ -11,8 +11,8 @@ tooltip = "This is a test tooltip!";
 tooltipOwned = "This is a test tooltipOwned!";
 dlcColor[] =
 {
-	1.00,	//Red
+	0.0,	//Red
 	0.4,	//Green
-	0.0,	//Blue
+	1.00,	//Blue
 	1.0		//Alpha
 };

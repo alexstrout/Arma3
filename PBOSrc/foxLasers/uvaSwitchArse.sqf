@@ -4,9 +4,9 @@ scopeName "uvaSwitchArse";
 //Arguments
 _unit = _this select 0;
 _mode = _this select 1; //see switch block
-_uvaActivateOnInventoryOpen = (configFile >> "foxConfig" >> "uvaActivateOnInventoryOpen") call BIS_fnc_getCfgDataBool;
-if (isNil "_uvaActivateOnInventoryOpen") then {
-	_uvaActivateOnInventoryOpen = false;
+_uvaActivateOnInventoryOpen = false;
+if ((configFile >> "foxConfig" >> "useSettings") call BIS_fnc_getCfgDataBool) then {
+	_uvaActivateOnInventoryOpen = (configFile >> "foxConfig" >> "uvaActivateOnInventoryOpen") call BIS_fnc_getCfgDataBool;
 };
 
 //Remove old actions and events (if present)
