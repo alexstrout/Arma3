@@ -1,3 +1,6 @@
+#define true 1
+#define false 0
+
 class CfgPatches {
 	class foxConfig {
 		units[] = {};
@@ -7,7 +10,5 @@ class CfgPatches {
 };
 
 class foxConfig {
-	#define true 1
-	#define false 0
 	#include "\userconfig\foxConfig\settings.hpp"
 };

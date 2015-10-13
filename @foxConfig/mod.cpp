@@ -1,18 +1,20 @@
-name = "fox Module Configuration";
-version = "0.01";
-author = "fox";
-actionName = "Herp Derp";
+#define true 1
+#define false 0
+
+//picture = "picture.paa"; //Expansions Menu - larger, suggested 512x512
+//logo = "logo.paa"; //Main Menu - smaller
+//logoOver = "logoover.paa"; //Main Menu (Mouseover)
+tooltip = "fox Module Configuration";
+//tooltipOwned = "TooltipOwned";
 //action = "http://www.88flak.com/";
-description = "This is a test description!";
-overview = "This is a test overview!";
-overviewText = "This is a test overviewText!";
-overviewFootnote = "This is a test overviewFootnote!";
-tooltip = "This is a test tooltip!";
-tooltipOwned = "This is a test tooltipOwned!";
-dlcColor[] =
-{
-	0.0,	//Red
-	0.4,	//Green
-	1.00,	//Blue
-	1.0		//Alpha
-};
+actionName = "Herp Derp";
+//fieldManualTopicAndHint[] = { "Curator", "Curator" };
+dlcColor[] = { 0.0,	0.4, 1.0, 1.0 }; //RGBA
+overview = "This is a test description!"; //Expansions Menu
+hideName = false; //true;
+hidePicture = false;
+name = "fox Module Configuration";
+//dir = "Curator";
+//appId = 275700;
+author = "fox";
+version = "0.01";

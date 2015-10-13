@@ -1,18 +1,20 @@
-name = "Universal Virtual Armory / AI Tweaks";
-version = "0.01";
-author = "fox";
-actionName = "Herp Derp";
+#define true 1
+#define false 0
+
+//picture = "picture.paa"; //Expansions Menu - larger, suggested 512x512
+//logo = "logo.paa"; //Main Menu - smaller
+//logoOver = "logoover.paa"; //Main Menu (Mouseover)
+tooltip = "fox Universal Virtual Arsenal + AI Tweaks";
+//tooltipOwned = "TooltipOwned";
 //action = "http://www.88flak.com/";
-description = "This is a test description!";
-overview = "This is a test overview!";
-overviewText = "This is a test overviewText!";
-overviewFootnote = "This is a test overviewFootnote!";
-tooltip = "This is a test tooltip!";
-tooltipOwned = "This is a test tooltipOwned!";
-dlcColor[] =
-{
-	1.00,	//Red
-	0.4,	//Green
-	0.0,	//Blue
-	1.0		//Alpha
-};
+actionName = "Herp Derp";
+//fieldManualTopicAndHint[] = { "Curator", "Curator" };
+dlcColor[] = { 1.0,	0.4, 0.0, 1.0 }; //RGBA
+overview = "This is a test description!"; //Expansions Menu
+hideName = false; //true;
+hidePicture = false;
+name = "fox Universal Virtual Arsenal + AI Tweaks";
+//dir = "Curator";
+//appId = 275700;
+author = "fox";
+version = "0.01";
