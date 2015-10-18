@@ -28,19 +28,19 @@ switch _mode do {
 		if (_uvaActivateOnInventoryOpen) then {
 			//Add toggle action to turn "off"
 			_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#0064FF'>Arsenal -> Inventory (Forced When Firing)</t>", {
-				[_this select 0, "off"] execVM '\foxLasers\uvaSwitchArse.sqf';
+				[_this select 0, "off"] execVM '\foxUVA\uvaSwitchArse.sqf';
 			}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
 
 			//Inventory opened - Arsenal up!
 			_unit setVariable ["_foxUVAEventInvOpened", _unit addEventHandler ["InventoryOpened", {
-				[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
+				[_this select 0] execVM '\foxUVA\uvaActionUseArse.sqf';
 				true;
 			}]];
 		}
 		else {
 			//Add activate action
 			_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#FFFF64'>Arsenal (Valid Until Firing)</t>", {
-				[_this select 0] execVM '\foxLasers\uvaActionUseArse.sqf';
+				[_this select 0] execVM '\foxUVA\uvaActionUseArse.sqf';
 			}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
 		};
 	};
@@ -49,7 +49,7 @@ switch _mode do {
 	case "off": {
 		//Add toggle action to turn "on"
 		_unit setVariable ["_foxUVAArseAction", _unit addAction ["<t color='#FF6400'>Inventory -> Arsenal (Valid Until Firing)</t>", {
-			[_this select 0, "on"] execVM '\foxLasers\uvaSwitchArse.sqf';
+			[_this select 0, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
 		}, nil, 1.500881, false, true, "", "vehicle _this == vehicle _target"]];
 	};
 };
@@ -58,10 +58,10 @@ switch _mode do {
 //Note: Here (instead of uvaEvents) so that these events will stay removed on "exit" as they will no longer be needed
 //Unit fired - disallow loadout for rest of life
 _unit setVariable ["_foxUVAEventFired", _unit addEventHandler ["Fired", {
-	[_this select 0, "exit"] execVM '\foxLasers\uvaSwitchArse.sqf';
+	[_this select 0, "exit"] execVM '\foxUVA\uvaSwitchArse.sqf';
 }]];
 
 //Unit killed - disallow loadout for rest of life (otherwise could freely Arsenal off corpse and other weirdness)
 _unit setVariable ["_foxUVAEventKilled", _unit addEventHandler ["Killed", {
-	[_this select 0, "exit"] execVM '\foxLasers\uvaSwitchArse.sqf';
+	[_this select 0, "exit"] execVM '\foxUVA\uvaSwitchArse.sqf';
 }]];

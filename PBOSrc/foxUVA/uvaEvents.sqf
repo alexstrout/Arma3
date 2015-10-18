@@ -8,11 +8,11 @@ if (_unit getVariable ["_foxUVAEventNeedsInit", true]) then {
 	_unit setVariable ["_foxUVAEventNeedsInit", false];
 
 	//Initial state - allow loadouts
-	[_unit, "on"] execVM '\foxLasers\uvaSwitchArse.sqf';
+	[_unit, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
 
 	//Unit respawned - allow loadouts again
 	_unit addEventHandler ["Respawn", {
 		_unit = _this select 0;
-		[_unit, "on"] execVM '\foxLasers\uvaSwitchArse.sqf';
+		[_unit, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
 	}];
 };

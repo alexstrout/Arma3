@@ -2,7 +2,7 @@
 #define false 0
 
 class CfgPatches {
-	class foxLasers {
+	class foxUVA {
 		units[] = {};
 		weapons[] = {};
 		requiredAddons[] = {};
@@ -10,10 +10,10 @@ class CfgPatches {
 };
 
 class CfgFunctions {
-	class foxLasers {
-		class foxLasersFnc {
+	class foxUVA {
+		class foxUVAFnc {
 			class init {
-				file = "\foxLasers\init.sqf";
+				file = "\foxUVA\init.sqf";
 				postInit = 1;
 				recompile = 1;
 			};
