@@ -1,4 +1,5 @@
 syntax: glob
 *.biprivatekey
+*.bisign
 *.lnk
 *.pbo
