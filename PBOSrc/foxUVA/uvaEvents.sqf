@@ -3,16 +3,14 @@
 //Arguments
 _unit = _this select 0;
 
-//Operate on unit if events haven't already been set on unit
-if (_unit getVariable ["_foxUVAEventNeedsInit", true]) then {
-	_unit setVariable ["_foxUVAEventNeedsInit", false];
+//Remove old actions and events (if present)
+_unit removeEventHandler ["Respawn", _unit getVariable ["_foxUVAEventRespawn", -1]];
 
-	//Initial state - allow loadouts
+//Initial state - allow loadouts
+[_unit, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
+
+//Unit respawned - allow loadouts again
+_unit setVariable ["_foxUVAEventRespawn", _unit addEventHandler ["Respawn", {
+	_unit = _this select 0;
 	[_unit, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
-
-	//Unit respawned - allow loadouts again
-	_unit addEventHandler ["Respawn", {
-		_unit = _this select 0;
-		[_unit, "on"] execVM '\foxUVA\uvaSwitchArse.sqf';
-	}];
-};
+}]];

@@ -23,7 +23,7 @@ if ((configFile >> "foxConfig" >> "useSettings") call BIS_fnc_getCfgDataBool) th
 	} forEach units group _x;
 
 	//Add events for AI tweaks on all playable units
-	[_x, _aiPlayableUnitsGroupForceLasers, _aiPlayableUnitsForceSkill] execVM '\foxAI\aiEvents.sqf';
+	[_x, false, _aiPlayableUnitsForceSkill] execVM '\foxAI\aiEvents.sqf';
 } forEach playableUnits;
 
 //Start referencing player for local player group stuff
