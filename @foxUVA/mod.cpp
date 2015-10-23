@@ -1,9 +1,10 @@
 #define true 1
 #define false 0
 
-//picture = "picture.paa"; //Expansions Menu - larger, suggested 512x512
-//logo = "logo.paa"; //Main Menu - smaller
-//logoOver = "logoover.paa"; //Main Menu (Mouseover)
+picture = "\foxUVA\logos\picture.paa"; //Expansions Menu - 1024x512
+logo = "\foxUVA\logos\logo.paa"; //Main Menu - 128x128
+logoOver = "\foxUVA\logos\logoOver.paa"; //Main Menu (Mouseover)
+logoSmall = "\foxUVA\logos\logoSmall.paa"; //??? - 32x32
 tooltip = "foxMod: Universal Virtual Arsenal";
 //tooltipOwned = "TooltipOwned";
 //action = "http://www.88flak.com/";
