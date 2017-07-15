@@ -1,0 +1,16 @@
+Enables configuration of all installed "foxMod" Module settings after userconfig folder is copied to Arma 3 install directory, via editing "<Arma 3 install dir>\userconfig\foxConfig\settings.hpp" with any text editor.
+
+To use, simply copy the "userconfig" folder to your Arma 3 install directory.
+	e.g. "C:\Program Files (x86)\Steam\steamapps\common\Arma 3"
+
+Once copied, simply edit the "\userconfig\foxConfig\settings.hpp" file in any text editor as desired.
+More information on each option can be found within the file itself.
+
+If you wish to use the default options, you can ignore this directory.
+
+Public server key is included in the "keys" folder.
+This mod is client-side, and has no effect when run directly on a dedicated server.
+
+Revision History:
+r1:
+-- Initial release.

@@ -1,0 +1,10 @@
+Enables an Arsenal action to your character (and subordinate AI) that may be used anywhere until you have fired your weapon or deployed equipment. Also fixes bugs where voice, face and emblem could be changed after loading a previously saved loadout.
+
+May optionally be set to activate Arsenal on Inventory opening, with "Arsenal <-> Inventory" toggle action (instead of dedicated "Arsenal" action as default) when configured via foxConfig.
+
+Public server key is included in the "keys" folder.
+This mod is client-side, and has no effect when run directly on a dedicated server.
+
+Revision History:
+r1:
+-- Initial release.
