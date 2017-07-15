@@ -1,9 +1,9 @@
 Maxes out AI skill and ability ranges for improved group AI, making them more useful in lieu of real players.
 
-May optionally apply to all playable units (and playable units' groups) when configured via foxConfig.
+May optionally apply to all playable units (and playable units' groups) when configured via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxConfig[/url].
 
 Public server key is included in the "keys" folder.
-This mod is client-side, and has no effect when run directly on a dedicated server unless configured to also affect all playable units (and/or playable units' groups) via foxConfig.
+This mod is client-side, and has no effect when run directly on a dedicated server unless configured to also affect all playable units (and/or playable units' groups) via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxConfig[/url].
 
 Revision History:
 r1:
