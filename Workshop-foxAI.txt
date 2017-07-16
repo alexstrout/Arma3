@@ -1,9 +1,16 @@
-Maxes out AI skill and ability ranges for improved group AI, making them more useful in lieu of real players.
+Maxes out skills and abilities for all AI within the player's group, making them more useful in lieu of real players.
 
-May optionally apply to all playable units (and playable units' groups) when configured via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxConfig[/url].
+Also enables usage of IR lasers for all AI within the player's group; they will use lasers when in active combat stance, but not in stealth stance or when out of combat (vanilla behavior for IR-enabled units).
 
+[h1]Usage[/h1]
+When in-game, behold your useful AI teammates.
+
+[h1]Configuration[/h1] (via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxMod Configuration[/url])
+May be configured to apply to all playable units (or playable units' groups), and also enable/disable IR laser usage.
+
+[h1]Server Information[/h1]
 Public server key is included in the "keys" folder.
-This mod is client-side, and has no effect when run directly on a dedicated server unless configured to also affect all playable units (and/or playable units' groups) via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxConfig[/url].
+This mod is client-side, and has no effect when run directly on a dedicated server unless configured to also affect all playable units (or playable units' groups) as mentioned above.
 
 Revision History:
 r1:

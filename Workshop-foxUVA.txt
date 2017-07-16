@@ -1,7 +1,22 @@
-Enables an Arsenal action to your character (and subordinate AI) that may be used anywhere until you have fired your weapon or deployed equipment. Also fixes bugs where voice, face and emblem could be changed after loading a previously saved loadout.
+Enables an "Arsenal" action for the player (and all subordinate AI within the player's group) that may be used anywhere until you have fired your weapon or deployed equipment.
 
-May optionally be set to activate Arsenal on Inventory opening, with "Arsenal <-> Inventory" toggle action (instead of dedicated "Arsenal" action as default) when configured via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxConfig[/url].
+Utilizes the built-in vanilla Virtual Arsenal script, but configures it to only allow loadout changes.
+Also addresses the following issues with Virtual Arsenal:
+[list][*]Fix bug where Virtual Arsenal would not function properly on AI.
+[*]Fix bug where Virtual Arsenal screen could not be closed after death.
+[*]Fix bug where voice, face, and emblem may change when applying a saved loadout.
+(These still change during the loadout process, but will be reverted when closing the screen.)
+[*]Fix possible voice, face, and emblem inconsistencies in MP caused by the above bug.[/list]
+These fixes do not modify the vanilla Virtual Arsenal script in any way and should be future-proof.
 
+[h1]Usage[/h1]
+When in-game, select the "Arsenal" action to bring up the Virtual Arsenal and configure your loadout.
+Subordinate AI can be ordered to use the "Arsenal" action to configure their loadouts as well.
+
+[h1]Configuration[/h1] (via [url=http://steamcommunity.com/sharedfiles/filedetails/?id=1052099973]foxMod Configuration[/url])
+May be configured to activate Arsenal on Inventory opening, with "Arsenal <-> Inventory" toggle action (instead of dedicated "Arsenal" action as default).
+
+[h1]Server Information[/h1]
 Public server key is included in the "keys" folder.
 This mod is client-side, and has no effect when run directly on a dedicated server.
 
